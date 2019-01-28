@@ -16,4 +16,4 @@ env/
 .cache/
 
 venv/
-*.vscode/
+.vscode/
