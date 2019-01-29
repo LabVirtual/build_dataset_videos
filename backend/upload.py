@@ -1,5 +1,9 @@
 from flask_restful import Resource, reqparse
+from flask import request, jsonify
 import werkzeug
+from datetime import datetime
+import random as rd
+from hashlib import md5
 
 
 class Upload(Resource):
@@ -10,6 +14,16 @@ class Upload(Resource):
         parse.add_argument('info', type=dict, location='json')  #TODO
         args = parse.parse_args()
         audioFile = args['file']
-        audioFile.save("your_file_name.jpg")
+        file_name = md5((str(datetime.now()) + str(rd.random())).encode()).hexdigest()
+        path_file = 'dataset/{}.jpg'.format(file_name)
+        audioFile.save(path_file)
+        
 
-        return {'status' : 'sucess'}
+        return {
+            'status': 'sucess',
+            'path_file': path_file
+        }
+
+    def get(self):
+        
+        data = request.get_json(force=True)
