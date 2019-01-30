@@ -4,6 +4,7 @@ import werkzeug
 from datetime import datetime
 import random as rd
 from hashlib import md5
+from request_file import *
 
 
 class Upload(Resource):
@@ -17,7 +18,6 @@ class Upload(Resource):
         file_name = md5((str(datetime.now()) + str(rd.random())).encode()).hexdigest()
         path_file = 'dataset/{}.jpg'.format(file_name)
         audioFile.save(path_file)
-        
 
         return {
             'status': 'sucess',
@@ -25,5 +25,6 @@ class Upload(Resource):
         }
 
     def get(self):
-        
         data = request.get_json(force=True)
+        if  not data['update_file']:
+            upload_file = define_file(data)

@@ -20,7 +20,7 @@ class Database():
     def insert_one(self, json):
         return self.collection.insert_one(json)
 
-    def update(self, new_json, json):
+    def update_one(self, new_json, json):
         newvalues = { "$set": new_json }
         return self.collection.update_one(json, newvalues)
 

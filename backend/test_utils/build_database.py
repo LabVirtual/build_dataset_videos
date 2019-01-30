@@ -16,16 +16,10 @@ exemplo_1 = {
     "state": "mg",
     "date_birth": "27-01-1997",
     "registration_date": "24-01-2019",
-    "dataset": [
-        {
-            "module": "a",
-            "#video": 25
-        },
-        {
-            "module": "b",
-            "#video": 15
-        }
-    ]
+    "dataset": {
+        "module_current": "a",
+        "#video": 25
+    }
 }
 collection.insert_one(exemplo_1)
 
@@ -34,5 +28,6 @@ collection = db['videos_ileel']
 exemplo_2 = {
     "post_date": "12-01-2019",
     "path_file": "/home/ileel/dataset/asd6a4sdasd.mp4",
-    "_id_author": "adfsdfsdfsfs654sdf64sfsf"
+    "_id_author": "adfsdfsdfsfs654sdf64sfsf",
+    "module": "a"
 }
