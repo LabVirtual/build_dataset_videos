@@ -6,6 +6,8 @@ import random as rd
 from hashlib import md5
 from request_file import *
 
+modules = "a b c d e f g h i  k ".split()
+
 
 class Upload(Resource):
 
@@ -26,5 +28,19 @@ class Upload(Resource):
 
     def get(self):
         data = request.get_json(force=True)
-        if  not data['update_file']:
-            upload_file = define_file(data)
+
+        # find data['_id']
+        db = Database('users')
+        user = db.find_one({'_id': ObjectId(data['_id'])})
+
+        if data['update_module']:
+            # insert em videos_ileel com o data['path_file']
+            # update em users.dataset
+
+            
+
+        # verifica a contagem dos videos
+        # atualiza a contagem e modulo(se necessario)
+
+        # busca a url do video 
+        # envia o video pro front

@@ -13,8 +13,10 @@ class Register(Resource):
         
         match = {'cpf':data['cpf']}
         if usr.find_one(match) == None:
-            data['dataset'] = []
-            data['current_module'] = ''
+            data['dataset'] = {
+                'current_module': 'a',
+                '#video': 0
+            }
             usr.insert_one(data)
             return {'status': 'cadastrado'}
         else:
