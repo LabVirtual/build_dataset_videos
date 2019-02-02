@@ -19,7 +19,7 @@ class Sigin(Resource):
                 return {
                     'status': 'ok',
                     'name': result['name'],
-                    'last_name': result['last_name']
+                    'last_name': result['last_name'],
                     '_id': str(result['_id']),
                     'current_module': result['current_module']
                 }

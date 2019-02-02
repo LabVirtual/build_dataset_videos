@@ -14,7 +14,7 @@ def define_file(data):
     if user['dataset'][i]['#video'] < 50:
         return current_module
     else:
-        for x in user['dataset']:
+        for x in user['dataset']
             
  
 
