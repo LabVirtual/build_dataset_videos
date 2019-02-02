@@ -1,5 +1,12 @@
 from pymongo import MongoClient
 
+
+client = MongoClient('mongodb://localhost:27017/',
+                    username='skdfksfksdhfh',
+                    password='kabdfkahkdsf',
+                    authSource='dataset_ileel',
+                    authMechanism='SCRAM-SHA-1')
+
 client = MongoClient('mongodb://localhost:27017/')
 db = client['dataset_ileel']
 
@@ -17,8 +24,8 @@ exemplo_1 = {
     "date_birth": "27-01-1997",
     "registration_date": "24-01-2019",
     "dataset": {
-        "module_current": "a",
-        "#video": 25
+        "module_current": "Grupo1",
+        "#video": 1
     }
 }
 collection.insert_one(exemplo_1)
@@ -29,5 +36,5 @@ exemplo_2 = {
     "post_date": "12-01-2019",
     "path_file": "/home/ileel/dataset/asd6a4sdasd.mp4",
     "_id_author": "adfsdfsdfsfs654sdf64sfsf",
-    "module": "a"
+    "module": "Grupo1"
 }

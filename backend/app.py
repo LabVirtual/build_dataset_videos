@@ -13,7 +13,7 @@ api = Api(app)
 
 api.add_resource(Register, '/api/register')
 api.add_resource(Sigin, '/api/sigin')
-api.add_resource(Upload, '/upload')
+api.add_resource(Upload, '/api/upload')
 
 
 if __name__ == '__main__':

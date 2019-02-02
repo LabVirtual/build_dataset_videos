@@ -1,6 +1,7 @@
 from flask_restful import Resource
 from flask import request, jsonify
 from bson import ObjectId
+from hashlib import md5
 
 from db import Database
 
@@ -8,14 +9,11 @@ from db import Database
 class Sigin(Resource):
 
     def get(self):
-
         data = request.get_json(force=True)
         usr = Database('users')
-
-        query = {'cpf':data['cpf']}
-        result = usr.find_one(query)
+        result = usr.find_one({'cpf':data['cpf']})
         if result != None:
-            if result['password'] == data['password']:
+            if result['password'] == md5(data['password']).hexdigest():
                 return {
                     'status': 'ok',
                     'name': result['name'],
