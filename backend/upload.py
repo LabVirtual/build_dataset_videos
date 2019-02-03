@@ -30,9 +30,6 @@ class Upload(Resource):
     def get(self):
         modules = "Grupo1 Grupo2 Grupo3 Grupo4 Grupo5 Grupo6 Grupo7 Grupo8 Grupo9 Grupo10 Grupo11 Grupo12".split()
         data = request.get_json(force=True)
-
-        find data['_id']
-
         db = Database('users')
         user = db.find_one({'_id': ObjectId(data['_id'])})
         if data['update_module']:
@@ -53,11 +50,6 @@ class Upload(Resource):
             user.update_one(update,user)
         # verifica a contagem dos videos    
         # atualiza a contagem e modulo(se necessario) 
-
-
-
-
-
         if user['dataset']['#video'] == self.check_capacity(user['dataset']):
             if user['dataset']['#video'] != modules[-1]:
                 _module = modules[modules.index(user['dataset']['current_module']) +1]
@@ -76,11 +68,10 @@ class Upload(Resource):
             response = send_from_directory(url['diretory'],url['file_name'])
             return response
 
-
     def find_file(self,module, file_index):
         files = os.listdir('/home/victor/Grupos/' + module)
         return {
-            'diretory':'/home/victor/Grupos/{}'.format(module),
+            'diretory':'/home/victor/Grupos/'+module,
             'file_name': files[file_index]
         }
 
